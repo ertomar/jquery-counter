@@ -56,12 +56,12 @@ $("#singers h3").click(function() {
     .children("div")
     .slideUp(700);
 });
-let date1 = new Date(2018, 12, 17);
-console.log(date1);
+let eventDate = new Date(2021, 12, 17);
+
 timer();
 function timer() {
-  let d = new Date();
-  let difference = d.getTime() - date1.getTime();
+  let currentDate = new Date();
+  let difference = eventDate.getTime() - currentDate.getTime();
 
   let seconds = Math.floor(difference / 1000);
   let minutes = Math.floor(seconds / 60);
@@ -102,4 +102,12 @@ $("#mySidenav a").click(function() {
   let href = $(this).attr("href");
   let offset = $(href).offset().top;
   $("body").animate({ scrollTop: offset }, 1000);
+});
+$("#join-us form textarea").on("input", function() {
+  $("#join-us form #char").html(100 - $("#join-us form textarea").val().length);
+  if ($("#join-us form textarea").val().length > 100) {
+    $("#join-us form #char").html("your available character finished");
+    $("#remainingChars").html("");
+    $("#join-us form .btn").attr("disabled", true);
+  }
 });
