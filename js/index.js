@@ -109,5 +109,8 @@ $("#join-us form textarea").on("input", function() {
     $("#join-us form #char").html("your available character finished");
     $("#remainingChars").html("");
     $("#join-us form .btn").attr("disabled", true);
+  } else {
+    $("#join-us form .btn").attr("disabled", false);
+    $("#remainingChars").html("Character Reamining");
   }
 });
